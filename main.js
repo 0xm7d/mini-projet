@@ -6,7 +6,6 @@ let stock = [
 let len = 0
     for(let i = 0;stock[i] != undefined;i++)
         len++
-console.log(stock)
 function    Afficher(){
     for(let j = 0; j < len;j++){
         console.log(`titre : ${stock[j].titre}; auteur : ${stock[j].auteur}; prix : ${stock[j].prix}; quantite : ${stock[j].quantite}`)
@@ -41,7 +40,13 @@ function    Ajouter(){
         }
         stock.push(new_livre)
     }
-    // console.log(stock)
+    let x = prompt("voulez-vous voir le stock complet maintenant Yes/No? : ")
+    if(x == 'yes' || x == 'Yes' || x == 'Y' || x == 'y')
+        console.log(stock)
+    else if(x == 'no' || x == 'No' || x == 'N' || x == 'n')
+        console.log("merci ")
+    else
+        console.log("nous n'avons que oui ou non")
 }
 function    Mettre_a_jour(){
     let found = false
@@ -57,7 +62,15 @@ function    Mettre_a_jour(){
     }
     if(found == false)
         console.log("nous n'avons pas ce livre en stock ")
-    console.log(stock)
+    if(found == true){
+        let x = prompt("voulez-vous voir le stock complet maintenant Yes/No? : ")
+        if(x == 'yes' || x == 'Yes' || x == 'Y' || x == 'y')
+            console.log(stock)
+        else if(x == 'no' || x == 'No' || x == 'N' || x == 'n')
+            console.log("merci ")
+        else
+            console.log("nous n'avons que oui ou non")
+    }
 }
 function    Supprimer(){
     found = false
@@ -70,7 +83,15 @@ function    Supprimer(){
     }
     if(found == false)
         console.log("nous n'avons pas ce livre en stock ")
-console.log(stock)
+    if(found == true){
+        let x = prompt("voulez-vous voir le stock complet maintenant Yes/No? : ")
+        if(x == 'yes' || x == 'Yes' || x == 'Y' || x == 'y')
+            console.log(stock)
+        else if(x == 'no' || x == 'No' || x == 'N' || x == 'n')
+            console.log("merci ")
+        else
+            console.log("nous n'avons que oui ou non")
+    }
 }
 function    Nombre_stock(){
     console.log(`le nombre total de livres en stock = ${len}`)
@@ -97,5 +118,5 @@ switch(id){
         Nombre_stock()
         break;
     default:
-        console.log("coming soon")
+        console.log("à venir")
 }
