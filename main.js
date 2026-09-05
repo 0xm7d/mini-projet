@@ -1,7 +1,8 @@
 const prompt = require('prompt-sync')();
 let stock = [
-    {titre:"Rich Dad Poor Dad",auteur:"Robert Kiyosak",prix:"20$",quantite:3,},
-    {titre:"salam",auteur:"Robert Kiyosak",prix:"25$",quantite:13,},
+    {titre:"Rich Dad Poor Dad",auteur:"Robert Kiyosak",prix:"20$",quantite:3},
+    {titre:"salam",auteur:"Robert Kiyosak",prix:"25$",quantite:13},
+    {titre:"hello",auteur:"Robert",prix:"25$",quantite:16},
 ]
 let len = 0
     for(let i = 0;stock[i] != undefined;i++)
@@ -31,12 +32,12 @@ function    Ajouter(){
         let add_titre = prompt(`Entrer le titre de livre ${i} : `)        
         let add_auteur = prompt(`Entrer le auteur de livre ${i} : `)        
         let add_prix = prompt(`Entrer le prix de livre ${i} : `)        
-        let add_quentite = prompt(`Entrer le quentite de livre ${i}: `)
+        let add_quantite = prompt(`Entrer le quentite de livre ${i}: `)
         let new_livre = {
             titre:add_titre,
             auteur:add_auteur,
             prix:add_prix,
-            quantite:add_quentite
+            quantite:add_quantite
         }
         stock.push(new_livre)
     }
@@ -60,29 +61,31 @@ function    Mettre_a_jour(){
             found = true
         }
     }
-    if(found == false)
-        console.log("nous n'avons pas ce livre en stock ")
     if(found == true){
-        let x = prompt("voulez-vous voir le stock complet maintenant Yes/No? : ")
-        if(x == 'yes' || x == 'Yes' || x == 'Y' || x == 'y')
+        let x = prompt("voulez-vous voir le stock complet maintenant Oui/No? : ")
+        if(x == 'Oui' || x == 'oui' || x == 'O' || x == 'o')
             console.log(stock)
         else if(x == 'no' || x == 'No' || x == 'N' || x == 'n')
             console.log("merci ")
         else
             console.log("nous n'avons que oui ou non")
     }
+    if(found == false)
+        console.log("nous n'avons pas ce livre en stock ")
 }
 function    Supprimer(){
     found = false
-    let n = prompt("Entrer le titre de livre tu veux supprime : ")
-    for(let i = 0;i<len;i++){
-        if(n == stock[i].titre){
-            stock.splice(i)
-            found = true
+    let nbdlo = []
+    let x = prompt("entrez le nom du livre que vous souhaitez supprimer : ")
+    for(let i = 0;i < len;i++){
+        if (x == stock[i].titre) {
+            continue
+        }else
+            nbdlo[nbdlo.length] = stock[i];
+    stock = nbdlo
         }
-    }
     if(found == false)
-        console.log("nous n'avons pas ce livre en stock ")
+        console.log("nous n'avons pas ce livre en stock")
     if(found == true){
         let x = prompt("voulez-vous voir le stock complet maintenant Yes/No? : ")
         if(x == 'yes' || x == 'Yes' || x == 'Y' || x == 'y')
