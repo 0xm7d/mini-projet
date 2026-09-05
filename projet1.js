@@ -80,8 +80,16 @@ function    Supprimer(){
     for(let i = 0;i < len;i++){
         if (x == stock[i].titre) {
             continue
-        }else
-            nbdlo[nbdlo.length] = stock[i];
+        }else{
+            let new_list = {
+            titre:stock[i].titre,
+            auteur:stock[i].auteur,
+            prix:stock[i].prix,
+            quantite:stock[i].quantite
+        }
+        
+        nbdlo[nbdlo.length] = stock[i];
+        }
     stock = nbdlo
         }
     if(found == false)
