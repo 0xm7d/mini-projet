@@ -3,6 +3,15 @@ let contact = [
     {nom:"mohamed",numero:"+2126998876",email:"contact@contact.me"},
     {nom:"anas",numero:"+2126998876",email:"contact@contact.me"},
 ]
+function  voir_contact(){
+    let acces = prompt("bghiti tchof contact yes/no ? :")
+    if(acces == 'yes')
+        console.log(contact)
+    else if(acces == 'no')
+        console.log('merci')
+      else
+        console.log('dkhl gha yes awla no')
+}
 function    ajouter(){
     let n = Number(prompt('chhal mn contact baghi tzid : '))
     for(let i = 1;i<= n;i++){
@@ -16,13 +25,7 @@ function    ajouter(){
         }
         contact.push(new_contact)
     }
-    let acces = prompt("bghiti tchof stock yes/no ? :")
-    if(acces == 'yes')
-        console.log(contact)
-    else if(acces == 'no')
-        console.log('merci')
-    else
-        console.log('dkhl gha yes awla no')
+    voir_contact()
 }
 function mettre_a_jour(){
   let f = false
@@ -37,8 +40,9 @@ function mettre_a_jour(){
     }
   }
   if(f == false)
-    console.log("makaynch had contact f stock !!")
-  console.log(contact)
+    console.log("makaynch had contact !!")
+  if(f == true)
+    voir_contact()
 }
 function    afficher(){
     for(let j = 0; j < contact.length;j++){
@@ -75,7 +79,7 @@ function supprime(){
   if(f == false)
     console.log("Nous n'avons pas ce nom dans nos contacts !")
   if(f == true)
-    console.log(contact)
+    voir_contact()
 }
 let id = 0
 while(id != 6){
