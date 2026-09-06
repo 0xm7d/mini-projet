@@ -1,11 +1,10 @@
+const prompt = require('prompt-sync')();
 let contact = [
     {nom:"mohamed",numero:"+2126998876",email:"contact@contact.me"},
+    {nom:"anas",numero:"+2126998876",email:"contact@contact.me"},
 ]
-let len = 0
-for(let i = 0; contact[i] != undefined; i++)
-    len++
 function    ajouter(){
-    let n = prompt('chhal mn contact baghi tzid : ')
+    let n = Number(prompt('chhal mn contact baghi tzid : '))
     for(let i = 1;i<= n;i++){
         let new_nom = prompt(`Entrer un nom ${i} : `)
         let new_numero = prompt(`Entrer une numero ${i} : `)
@@ -27,13 +26,11 @@ function    ajouter(){
 }
 function mettre_a_jour(){
   let f = false
-  let = target = prompt('Entrer le nom de contact : ')
-  for(let i = 0;i < len;i++){
+  let target = prompt('Entrer le nom de contact : ')
+  for(let i = 0;i < contact.length;i++){
     if(target == contact[i].nom){
-      let new_nom = prompt('ENtrer une nouvelle nom : ')
       let new_numero = prompt('Entrer une nouvelle numero : ')
       let new_email = prompt('Entrer une nouvelle email : ')
-      contact[i].nom = new_nom
       contact[i].numero = new_numero
       contact[i].email = new_email
       f = true
@@ -44,14 +41,14 @@ function mettre_a_jour(){
   console.log(contact)
 }
 function    afficher(){
-    for(let j = 0; j < len;j++){
+    for(let j = 0; j < contact.length;j++){
         console.log(`nom : ${contact[j].nom}; numero  : ${contact[j].numero}; email : ${contact[j].email}`)
     }
 }
 function recherche(){
   let f = false
   let t = prompt('Entrer le nom de contact : ')
-  for(let i = 0;i < len;i++){
+  for(let i = 0;i < contact.length;i++){
     if(t == contact[i].nom){
       console.log(`nom : ${contact[i].nom}; numero  : ${contact[i].numero}; email : ${contact[i].email}`)
       f = true
@@ -62,17 +59,28 @@ function recherche(){
     console.log("makaynch had contact : ")
 }
 function supprime(){
+  let f = false
+  let change = []
   let t = prompt('Entrer le nom de contact : ')
-  for(let i = 0;i < len ; i++ ){
+  for(let i = 0;i < contact.length ; i++ ){
     if(t == contact[i].nom){
+      f = true
       continue
-    else
-      
+    }
+    else{
+      change[change.length] = contact[i]
     }
   }
+  contact = change
+  if(f == false)
+    console.log("Nous n'avons pas ce nom dans nos contacts !")
+  if(f == true)
+    console.log(contact)
 }
-console.log("==== MENU ====\n 1. Ajouter un Contact\n 2. Afficher tous les Contact\n 3. Rechercher un contact par son nom\n 4. Mettre à jour un contact\n 5. Supprimer un contact\n ")
-let id = Number(prompt("choisir un option :"))
+let id = 0
+while(id != 6){
+console.log("==== MENU ====\n 1. Ajouter un Contact\n 2. Afficher tous les Contact\n 3. Rechercher un contact par son nom\n 4. Mettre à jour un contact\n 5. Supprimer un contact\n 6. Quitter ")
+id = Number(prompt("choisir un option :"))
 switch(id){
     case 1:
     ajouter()
@@ -86,6 +94,13 @@ switch(id){
   case 4:
     mettre_a_jour()
     break
+  case 5:
+    supprime()
+    break
+  case 6:
+    console.log("Au revoir !")
+    break
   default:
-        console.log("à venir")
+    console.log("Option invalide")
+}
 }
